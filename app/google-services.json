@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "284898511763",
+    "firebase_url": "https://climbr-f1fe2.firebaseio.com",
+    "project_id": "climbr-f1fe2",
+    "storage_bucket": "climbr-f1fe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284898511763:android:91a1d478312b96d4",
+        "android_client_info": {
+          "package_name": "com.markoss.treeclimbrandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284898511763-22fp6tqn8d8kt43m8hku19s6amca0khj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.markoss.treeclimbrandroid",
+            "certificate_hash": "ba4a3b91957e229a491beeda3e5b7d45e14b6f43"
+          }
+        },
+        {
+          "client_id": "284898511763-soi0eonm9rqa15mk7gmb4406ajs1na73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBPpEsZlFRCs20aNHnp3TVWyWcHL8HLzg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284898511763-88tve78e5psh593dr0s4vfsbp8loqbh8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.markoss.TreeClimbr"
+              }
+            },
+            {
+              "client_id": "284898511763-soi0eonm9rqa15mk7gmb4406ajs1na73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
