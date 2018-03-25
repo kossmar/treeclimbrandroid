@@ -4,17 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.os.Parcel
+import android.support.v4.content.ContextCompat
+import android.view.*
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.markoss.treeclimbrandroid.*
-
-val names = arrayListOf<String>(
-        "Donald Trump", "Steve Jobs", "Tim Cook"
-)
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.row_main.view.*
 
 var trees = arrayListOf<Tree>()
 
@@ -36,26 +36,26 @@ class TreeListActivity : AppCompatActivity() {
         val context = this
 
         listView.setOnItemClickListener { _, _, position, _ ->
-            val selectedItem = trees[position]
+            val selectedTree = trees[position]
             val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra("tree", selectedTree)
             startActivity(intent)
         }
+
+        trees = AppData.SharedInstance.treesArray
     }
+
+
 }
 
 class MyCustomAdapter(context: Context) : BaseAdapter() {
 
     val mContext: Context
 
-//    val names = arrayListOf<String>(
-//            "Donald Trump", "Steve Jobs", "Tim Cook"
-//    )
-
     init {
         mContext = context
     }
 
-    // number of rows in list
     override fun getCount(): Int {
         return trees.size
     }
@@ -72,18 +72,13 @@ class MyCustomAdapter(context: Context) : BaseAdapter() {
     override fun getView(position: Int, countView: View?, viewGroup: ViewGroup?): View {
         val layoutInflater = LayoutInflater.from(mContext)
         val rowMain = layoutInflater.inflate(R.layout.row_main, viewGroup, false)
-
-        val nameTextView = rowMain.findViewById<TextView>(R.id.name_textview)
-        nameTextView.text = trees[position].treeName
-
-        val positionTextView = rowMain.findViewById<TextView>(R.id.position_textview)
-        positionTextView.text = trees[position].treeDescription
+        val currentTree:Tree = trees[position]
+//        Picasso.get().load(currentTree.treePhotoURL).into(rowMain.list_imageView)
+        Glide.with(rowMain).load(currentTree.treePhotoURL).into(rowMain.list_imageview)
+//        rowMain.list_imageView.setImageResource(trees[position].treePhoto)
+        rowMain.name_textview.text = trees[position].treeName
 
         return rowMain
-
-
-//            val textView = TextView(mContext)
-//            textView.text = "HERE is my ROW for my LISTVIEW"
     }
 }
 

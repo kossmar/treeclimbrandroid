@@ -11,11 +11,10 @@ class AppData {
 
     companion object SharedInstance {
 
-        val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
-
+        private val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().reference
 
         var treesArray = arrayListOf<Tree>()
-        var treesNode = databaseRef!!.child("trees")
+        var treesNode:DatabaseReference = databaseRef.child("trees")
 
 
     }
