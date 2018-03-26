@@ -4,16 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcel
-import android.support.v4.content.ContextCompat
 import android.view.*
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.ListView
-import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.markoss.treeclimbrandroid.*
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_main.view.*
 
 var trees = arrayListOf<Tree>()

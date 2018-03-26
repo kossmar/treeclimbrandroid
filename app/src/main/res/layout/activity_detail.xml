@@ -1,52 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.markoss.treeclimbrandroid.com.markoss.treeclimbrandroid.DetailActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.markoss.treeclimbrandroid.DetailActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="100pt"
-        android:scaleType="centerCrop"
-        android:src="@drawable/sometree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/common_google_signin_btn_text_dark_default"
-        android:paddingHorizontal="5dp"
-        android:paddingVertical="0dp"
-        android:text="TextView"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <RadioGroup
-        android:layout_width="340dp"
-        android:layout_height="51dp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="256dp">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
-            android:text="Button" />
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/app_name">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/detailHeaderImageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_weight="1"
-            android:text="Button" />
-    </RadioGroup>
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/sometree" />
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photos" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comments" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MORE" />
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>
