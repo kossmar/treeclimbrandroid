@@ -17,20 +17,22 @@ import kotlinx.android.synthetic.main.activity_detail.view.*
 
 class DetailPhotoTab: Fragment() {
 
-    var con: Context = Activity()
+    var con: Context? = Activity()
     var photoArray = ArrayList<Photo>()
     lateinit var gridView: GridView
     lateinit var cl: DetailPhotoGridViewAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        con = context!!
+        con = if (context != null) context else null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val detailPhotoFragment = inflater.inflate(R.layout.fragment_detail_photo_tab, container, false)
-        cl = DetailPhotoGridViewAdapter(con)
+        if (con != null) {
+            cl = DetailPhotoGridViewAdapter(con as Context)
+        }
         gridView= detailPhotoFragment.findViewById<GridView>(R.id.gridView1) as GridView
         gridView.adapter = cl
 
