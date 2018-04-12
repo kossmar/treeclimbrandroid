@@ -14,7 +14,7 @@ import android.widget.TextView
 class DetailPhotoGridViewAdapter : BaseAdapter {
 
     var con: Context
-    private lateinit var inflater: LayoutInflater
+    private var inflater: LayoutInflater
 
     constructor(con: Context) : super() {
         this.con = con

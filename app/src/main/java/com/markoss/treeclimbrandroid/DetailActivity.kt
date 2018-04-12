@@ -91,7 +91,7 @@ class DetailActivity : AppCompatActivity() {
             val tab1 = DetailPhotoTab()
             val tab2 = DetailCommentTab()
             val tab3 = DetailMoreTab()
-            var selectedTab:Fragment = Fragment()
+            var selectedTab = Fragment()
             when (position) {
                 0 -> selectedTab = tab1
                 1 -> selectedTab = tab2
