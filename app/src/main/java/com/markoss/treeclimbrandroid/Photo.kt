@@ -29,7 +29,7 @@ class Photo(): Parcelable {
         image = parcel.readInt()
     }
 
-    constructor(URL: String){
+    constructor(URL: String) : this() {
         this.photoURL = URL
     }
 

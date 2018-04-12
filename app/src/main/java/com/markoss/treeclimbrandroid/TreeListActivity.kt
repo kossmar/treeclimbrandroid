@@ -31,7 +31,6 @@ class TreeListActivity : AppCompatActivity() {
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val selectedTree = trees[position]
-            val intent = Intent(this, DetailActivity::class.java)
             intent.putExtra("tree", selectedTree)
             startActivity(intent)
         }

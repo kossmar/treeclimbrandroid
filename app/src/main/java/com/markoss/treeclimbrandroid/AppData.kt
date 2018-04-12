@@ -15,6 +15,7 @@ class AppData {
 
         var treesArray = arrayListOf<Tree>()
         var treesNode:DatabaseReference = databaseRef.child("trees")
+        var photosNode:DatabaseReference = databaseRef.child("photos")
 
 
     }
