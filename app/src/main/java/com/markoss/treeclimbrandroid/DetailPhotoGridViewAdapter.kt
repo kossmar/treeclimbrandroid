@@ -23,12 +23,12 @@ class DetailPhotoGridViewAdapter : BaseAdapter {
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var holder: Holder
+        var holder = Holder()
         var rv: View
         rv = inflater.inflate(R.layout.gridview_photocell_layout,null)
-        holder.tv = rv.findViewById(R.id.photoCellTextView) as TextView
-        holder.iv = rv.findViewById(R.id.photoCellTextView) as ImageView
-
+        holder.tv = rv.findViewById<TextView>(R.id.photoCellTextView) as TextView
+        holder.iv = rv.findViewById<ImageView>(R.id.photoCellImageView) as ImageView
+        return rv
     }
 
     override fun getItem(position: Int): Any? {
@@ -43,7 +43,7 @@ class DetailPhotoGridViewAdapter : BaseAdapter {
         return 10
 
     }
-    public class Holder {
+    class Holder {
 
         lateinit var tv: TextView
         lateinit var iv: ImageView

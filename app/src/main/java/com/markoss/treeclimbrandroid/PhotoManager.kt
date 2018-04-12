@@ -1,6 +1,7 @@
 package com.markoss.treeclimbrandroid
 
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import javax.security.auth.callback.Callback
 
@@ -15,6 +16,9 @@ object PhotoManager {
         var tempPhotoArray = ArrayList<Photo>()
 
         AppData.photosNode.child(tree.treeID).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
 
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 if (dataSnapshot!!.exists()) {
@@ -32,7 +36,7 @@ object PhotoManager {
                         readPhoto.userID = userID
                         readPhoto.userName = userName
                         readPhoto.timeStamp = timeStamp
-                        readPhoto.isMain = isMain
+                        readPhoto.isMain = isMain as Boolean
                         readPhoto.photoID = photoID
                         readPhoto.imageDBName = imageDBName
 
@@ -42,6 +46,5 @@ object PhotoManager {
                 }
             }
         })
-
     }
 }

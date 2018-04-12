@@ -14,7 +14,7 @@ import android.widget.GridView
 
 class DetailPhotoTab: Fragment() {
 
-    var con: Context = this.context.applicationContext
+    var con: Context = this.context!!
     var photoArray = ArrayList<Photo>()
     lateinit var gridView: GridView
     lateinit var cl: DetailPhotoGridViewAdapter
@@ -23,7 +23,7 @@ class DetailPhotoTab: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        gridView = container!!.findViewById<GridView>(R.id.gridView) as GridView
+        gridView = container!!.findViewById<GridView>(R.id.gridView1) as GridView
         cl = DetailPhotoGridViewAdapter(con)
 
         return inflater.inflate(R.layout.fragment_detail_photo_tab, container, false)
