@@ -29,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
      */
     private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
     var tree:Tree = Tree("", "", 0.0, 0.0)
+    var photoArray = ArrayList<Photo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,10 @@ class DetailActivity : AppCompatActivity() {
 
         container.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabs))
         tabs.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(container))
+
+        PhotoManager.loadPhotos(tree, {
+            photoArray = it
+        })
 
     }
 

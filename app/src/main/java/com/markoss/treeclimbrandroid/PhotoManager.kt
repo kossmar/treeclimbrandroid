@@ -23,12 +23,12 @@ object PhotoManager {
             override fun onDataChange(dataSnapshot: DataSnapshot?) {
                 if (dataSnapshot!!.exists()) {
                     for (t in dataSnapshot.children) {
-                        val photoDictionary = t.value as HashMap<String, String>
+                        val photoDictionary = t.value as HashMap<String, Any>
                         val userID: String = photoDictionary["userIDKey"] as String
                         val userName: String = photoDictionary["userNameKey"] as String
                         val photoURL: String = photoDictionary["urlKey"] as String
                         val timeStamp: String = photoDictionary["timeKey"] as String
-                        val isMain: String = photoDictionary["isMainKey"] as String
+                        val isMain: Boolean = photoDictionary["isMainKey"] as Boolean
                         val photoID: String = photoDictionary["photoIDKey"] as String
                         val imageDBName: String = photoDictionary["imageDBNameKey"] as String
 
@@ -36,7 +36,7 @@ object PhotoManager {
                         readPhoto.userID = userID
                         readPhoto.userName = userName
                         readPhoto.timeStamp = timeStamp
-                        readPhoto.isMain = isMain as Boolean
+                        readPhoto.isMain = isMain
                         readPhoto.photoID = photoID
                         readPhoto.imageDBName = imageDBName
 
