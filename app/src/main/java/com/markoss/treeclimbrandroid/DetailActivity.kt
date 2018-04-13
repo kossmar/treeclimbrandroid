@@ -31,12 +31,26 @@ class DetailActivity : AppCompatActivity() {
     var tree:Tree = Tree("", "", 0.0, 0.0)
     var photoArray = ArrayList<Photo>()
 
+    override fun onAttachFragment(fragment: android.app.Fragment?) {
+        super.onAttachFragment(fragment)
+
+//        var bundle = Bundle()
+//        bundle.putString("stuff", "MEATTTT")
+//        if (fragment != null) {
+//            fragment.arguments!!.putBundle("stuff", bundle)
+//        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+
         val bundle = intent.extras
         tree = bundle.getParcelable("tree")
         this.title = tree.treeName
+
         Glide.with(this).load(tree.treePhotoURL).into(this.detailHeaderImageView)
         setSupportActionBar(toolbar)
         toolbar.title = tree.treeName
@@ -79,7 +93,7 @@ class DetailActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            val tab1 = DetailPhotoTab()
+            val tab1 = DetailPhotoTab.newInstance(tree)
             val tab2 = DetailCommentTab()
             val tab3 = DetailMoreTab()
             var selectedTab = Fragment()

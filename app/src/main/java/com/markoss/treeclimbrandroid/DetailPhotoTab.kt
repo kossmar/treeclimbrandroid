@@ -17,14 +17,29 @@ import kotlinx.android.synthetic.main.activity_detail.view.*
 
 class DetailPhotoTab: Fragment() {
 
+    companion object {
+
+        fun newInstance(tree: Tree): DetailPhotoTab {
+         val args = Bundle()
+            args.putParcelable("tree", tree)
+            val photoFragment = DetailPhotoTab()
+            photoFragment.arguments = args
+            return photoFragment
+        }
+    }
+
     var con: Context? = Activity()
     var photoArray = ArrayList<Photo>()
+    var fragTree = Tree()
+    var fragmentListener: FragmentListener? = null
     lateinit var gridView: GridView
     lateinit var cl: DetailPhotoGridViewAdapter
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        con = if (context != null) context else null
+        if (context != null) {
+            con = context
+        } else null
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +48,18 @@ class DetailPhotoTab: Fragment() {
         if (con != null) {
             cl = DetailPhotoGridViewAdapter(con as Context)
         }
+
+        var args = arguments
+        fragTree = args!!.getParcelable("tree")
+
+//        fragTree = arguments!!.getParcelable("tree")
+
+//        var stuff: String = arguments!!.getString("stuff")
+//        println(stuff)
+
+        println("SHIIIIIT DICKS SFAJSFAHSJFAKSJF")
+        println(fragTree.treeName)
+
         gridView= detailPhotoFragment.findViewById<GridView>(R.id.gridView1) as GridView
         gridView.adapter = cl
 
