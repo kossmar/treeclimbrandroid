@@ -30,7 +30,7 @@ class DetailPhotoTab: Fragment() {
 
     var con: Context? = Activity()
     var photoArray = ArrayList<Photo>()
-    var fragTree = Tree()
+    lateinit var tree: Tree
     var fragmentListener: FragmentListener? = null
     lateinit var gridView: GridView
     lateinit var cl: DetailPhotoGridViewAdapter
@@ -46,21 +46,29 @@ class DetailPhotoTab: Fragment() {
                               savedInstanceState: Bundle?): View? {
         val detailPhotoFragment = inflater.inflate(R.layout.fragment_detail_photo_tab, container, false)
         if (con != null) {
-            cl = DetailPhotoGridViewAdapter(con as Context)
+            cl = DetailPhotoGridViewAdapter(con as Context, photoArray)
+        }
+        gridView= detailPhotoFragment.findViewById<GridView>(R.id.gridView1) as GridView
+
+        val args = arguments
+        if (args != null) {
+            tree = args.getParcelable("tree")
         }
 
-        var args = arguments
-        fragTree = args!!.getParcelable("tree")
+        println(tree.treeName)
 
-//        fragTree = arguments!!.getParcelable("tree")
 
-//        var stuff: String = arguments!!.getString("stuff")
-//        println(stuff)
+        PhotoManager.loadPhotos(tree, {
+            photoArray = it
+            println(tree.treeName)
+            println(photoArray.count())
+            cl = DetailPhotoGridViewAdapter(con as Context, photoArray)
+//            cl.notifyDataSetChanged()
+            gridView.adapter = cl
+//            this.gridView.invalidateViews()
+        })
 
-        println("SHIIIIIT DICKS SFAJSFAHSJFAKSJF")
-        println(fragTree.treeName)
 
-        gridView= detailPhotoFragment.findViewById<GridView>(R.id.gridView1) as GridView
         gridView.adapter = cl
 
 
