@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide
 
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.fragment_detail_photo_tab.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
