@@ -72,6 +72,7 @@ class DetailPhotoTab: Fragment() {
         gridView.adapter = cl
 
 
+
         return detailPhotoFragment
     }
 

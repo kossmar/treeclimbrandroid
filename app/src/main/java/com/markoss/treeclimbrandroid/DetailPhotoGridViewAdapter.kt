@@ -1,12 +1,11 @@
 package com.markoss.treeclimbrandroid
 
+import android.app.ActionBar
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.bumptech.glide.Glide
 
 /**
@@ -26,16 +25,21 @@ class DetailPhotoGridViewAdapter : BaseAdapter {
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
         var holder = Holder()
         var rv: View
-        rv = inflater.inflate(R.layout.gridview_photocell_layout,null)
-        holder.tv = rv.findViewById<TextView>(R.id.photoCellTextView) as TextView
-        holder.iv = rv.findViewById<ImageView>(R.id.photoCellImageView) as ImageView
-        if (photoArray != null) {
-            var currentPhoto = photoArray[position]
-            Glide.with(rv).load(currentPhoto.photoURL).into(holder.iv)
-        }
+        var cellWidth: Int = 40
+        var cellHeight: Int = 40
 
+            rv = inflater.inflate(R.layout.gridview_photocell_layout, null)
+//            rv.layoutParams.width = cellWidth
+//            rv.layoutParams.height = cellWidth
+            holder.tv = rv.findViewById<TextView>(R.id.photoCellTextView) as TextView
+            holder.iv = rv.findViewById<ImageView>(R.id.photoCellImageView) as ImageView
+            if (photoArray != null) {
+                var currentPhoto = photoArray[position]
+                Glide.with(rv).load(currentPhoto.photoURL).into(holder.iv)
+            }
         return rv
     }
 
